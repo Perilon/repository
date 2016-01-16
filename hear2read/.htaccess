@@ -1,0 +1,14 @@
+# Begin cache control #
+ExpiresActive on
+ExpiresDefault "now plus 15 minutes"
+ExpiresByType text/html "now plus 15 minutes"
+<FilesMatch "\.(css|png|bmp|ico|htm|gff|html|js|jpg|jpeg|gif|gcf)$">
+FileETag MTime Size
+ExpiresDefault "now plus 15 minutes"
+</FilesMatch>
+
+
+# End cache control #
+DirectoryIndex index.php
+
+
