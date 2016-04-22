@@ -1,6 +1,6 @@
 <?php
-session_save_path("/home/users/web/b1234/ipg.hear2readcom/cgi-bin/tmp"); 
-session_start(); 
+// session_save_path("/home/users/web/b1234/ipg.hear2readcom/cgi-bin/tmp"); 
+// session_start(); 
 ?>
 	<head>
 		<title>Hear2Read</title>
@@ -22,7 +22,8 @@ session_start();
 		<script src="js/jquery.bxslider.min.js"></script>
 		<!-- bxSlider CSS file -->
 		<link href="css/jquery.bxslider.css" rel="stylesheet" />
-		
+		<head profile="http://www.w3.org/2005/10/profile">
+		<link rel="icon" type="image/ico" href="http://Hear2Read.com/favicon.ico">
 		<!-- <script src="js/responsiveslides.min.js"></script> -->
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
@@ -54,7 +55,7 @@ session_start();
 		</script> -->
 	</head>
 	<!-- body -->
-	<body class="homepage">
+	<body class="homepage" style='background:none;'>
 		<!-- Header -->
 		<div id="header-wrapper">
 				<div id="header" class="container">
@@ -68,10 +69,10 @@ session_start();
 							<nav id="nav">
 								<ul>
 									<li><a class="icon fa-home" href="index.php"><span>Home</span></a></li>
-									<li><a class="icon fa-cog" href="solution.php"><span>Solution</span></a></li>
-									<li><a class="icon fa-cog" href="demo/app.php"<span>Demo</span></a></l1>
+									<li><a class="icon fa-book" href="solution.php"><span>Solution</span></a></li>
+									<li><a class="icon fa-headphones" href="demo/app.php"><span>Demo</span></a></li>
 									<li><a class="icon fa-cog" href="partners.php"><span>Partners</span></a></li>
-									<li><a class="icon fa-cog" href="join.php"><span>Join Us</span></a></li>
+									<li><a class="icon fa-star" href="join.php"><span>Join Us</span></a></li>
 									<!-- <li><a class="icon fa-cog" href="faq.php"><span>FAQ</span></a></li> -->
 								</ul>
 							</nav>

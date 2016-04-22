@@ -6,6 +6,7 @@ var currentExample = "";
 var currentExampleArray = "";
 var UserName = "";
 var UserEmail = "";
+var commentNumber = 0;
 
 var hindi_examples = [
 	"गाँव में इतने आदमी तो हैं, किस पर बेदखली नहीं आई, किस पर कुड़की नहीं आई।",
@@ -36,7 +37,7 @@ var hindi_examples = [
 	"दोनो इस वक़्त इस शान से बैठे पूड़ियाँ खा रहे थे जैसे जंगल में कोई शेर अपना शिकार उड़ा रहा हो.",
 	"गाड़ी में साँस लेने की जगह नहीं, खिड़की पर जरा सॉँस लेने खड़ा हो गया, तो उस पर इतना क्रोध!",
 	"दूसरों को, चाहे वे उसके पेट के जन्मे पुत्र ही क्यों न हों, उसके कामों में हस्तक्षेप करने का क्या अधिकार?",
-	"देखा सारा खेत रौदां पड़ा हुआ है और जबरा मॅड़ैया के नीचे चित लेटा है, मानो प्राण ही न हों ।",
+	"देखा सारा खेत रौंदा पड़ा हुआ है और जबरा मॅड़ैया के नीचे चित लेटा है, मानो प्राण ही न हों ।",
 	"शहर के रईस और हुक्काम एक तरफ, कालेज के छात्र दूसरी तरफ बैठे भोजन कर रहे थे।",
 	"चरित्र तो किसी के माथे पर लिखा नही रहता और शिक्षा का आजके के जमाने में मूल्य ही क्या ?",
 	"देश की क्या हालत है, लोगों को खद्दर नहीं मिलता, आप रेशमी साड़ियां खरीद रहे हैं !",
@@ -268,64 +269,65 @@ var telugu_examples = [
 	"ఇదే పేరుతో ఉన్న ఇతర ప్రాంతాల కొరకు వల్లూరు అయోమయ నివృత్తి చూడండి"
 ];
 var gujarati_examples = [
-	'गांधी कुटुंब प्रथम तो गांधियाणानो वेपार करनारुं होय एम जणाय छे.' ,
-	' पण मारा दादाथी मांडीने त्रण पेढी थयां तो ए कारभारुं करतुं आवेलुं छे.' ,
-	' उत्तमचंद गांधी अथवा ओता गांधी टेकीला हशे एम लागे छे.' ,
-	' तेमने राजखटपटने लीधे पोरबंदर छोडवुं पडेलुं ने जूनागढ राजयमां आश्रय लीधेलो.' ,
-	' तेमणे नवाबसाहेबने सलाम डाबे हाथे करी.' ,
-	' कोइए आ देखाता अविनयनुं कारण पूछयुं तो जवाब मळ्यो : ‘जमणो हाथ तो पोरबंदरने देवाइ चूकयो छे.’ ओता गांधीने एक पछी एक एम बे घर थयेलां.' ,
-	' पहेलाथी तेमने चार दीकरा हता अने बीजाथी बे.' ,
-	' आ भाइओ ओरमाया हता एवो ख्याल मने बचपण याद करतां आवतो ज नथी.' ,
-	' आमांना पांचमा करमचंद अथवा कबा गांधी अने छेल्ला तुलसीदास गांधी.' ,
-	' बंने भाइए वाराफरती पोरबंदरमां कारभारुं कर्युं.' ,
-	' पोरबंदरनुं कारभारुं छोडया पछी पोते राजस्थानिक कोर्टमां सभासद हता.' ,
-	' पछी राजकोटमां अने थोडो समय वांकानेरमां दीवान हता.' ,
-	' मरणवेळाए राजकोट दरबारना पेन्शनर हता.' ,
-	'  कबा गांधीने पण एक पछी एक चार घर थयेलां.' ,
-	' पहेलां बेथी बे दीकरीओ हती; छेल्लां पूतळीबाइथी एक दीकरी अने त्रण दीकरा.' ,
-	' पिता कुटुंबप्रेमी, सत्यप्रीय, शूरा, उदार पण क्रोधी हता.' ,
-	' कंइक विषयने विशे आसकत पण हशे.' ,
-	' तेमनो छेल्लो विवाह चाळीसमा वर्ष पछी थयेलो.' ,
-	' तेओ लांचथी दूर भागता, तेथी शुद्ध न्याय आपता एवी अमारा कुटुंबमां अने बहार वायका हती.' ,
-	' एक वेळा कोइ प्रांतना साहेबे राजकोटना ठाकोर साहेबनुं अपमान करेलुं, तेनी सामे तेओ थयेला.' ,
-	' साहेब गुस्से थया, कबा गांधीने माफी मागवा फरमाव्युं.' ,
-	' तेमणे माफी मागवानी ना पाडी तेथी थोडा कलाकने सारु हाजतमां पण रहेला.' ,
-	' छतां ते न डग्या तेथी अंते साहेबे तेमने छोडी देवानो हुकम कर्यों.' ,
-	' पिताश्रीए द्रव्य एकठुं करवानो लोभ कदी नहोतो राख्यो.' ,
-	' तेथी अमे भाइओ सारु जूज मिलकत मूकी गयेला.' ,
-	'  पितानी केळवणी केवळ अनुभवनी हती.' ,
-	' जेने आजे आपणे गुजराती पांच चोपडीनुं ज्ञान गणीए तेटली केळवणी ते पामेल हशे.' ,
-	' इतिहासभूगोळनुं ज्ञान तो मुद्दल न मळे.' ,
-	' आम छतां व्यवहारु ज्ञान एवा ऊंचा प्रकारनुं हतुं के झीणामां झीणा प्रश्र्नोना उकेल करवामां के हजार माणसोनी पासे काम लेवामां तेमने मुश्केली न आवती.' ,
-	' धार्मिक केळवणी नहीं जेवी हती, पण मंदिरोमां जवाथी कथा वगेरे सांभळीने जे धर्मज्ञान असंख्य हिंदुओने सहेजे मळी रहे छे ते तेमने हतुं.' ,
-	' छेवटना वर्षमां एक विद्धान ब्राह्मण जेओ कुटुंबना मित्र हता तेमनी सलाहथी तेमणे गीतापाठ शरू कर्यो हतो अने रोज थोडाघणा श्र्लोको पोताना पूजाना समये ऊंचे स्वरे पाठ करी जता.' ,
-	' हुं समजणो थयो त्यारथी तेणे कदी चातुर्मास छोडया होय एवुं मने स्मरण नथी.' ,
-	' कठणमां कठण व्रत ते आदरती अने निर्विध्ने पूरां करती.' ,
-	' लीधेलां व्रत मांदी पडे तोपण न ज छोडे.' ,
-	' एवो एक समय मने याद छे के जयारे तेणे चांद्रायण व्रत लीधेलुं, तेमां मांदी पडेली पण व्रतने न छोडेलुं.' ,
-	' चातुर्मासमां एक टाणां करवां ए तो तेने सामान्य वात हती.' ,
-	' एटलेथी संतोष न वाळतां एक चातुर्मासमां तेणे धारणांपारणां करेलां.' ,
-	' बेत्रण सामटा उपवास ए एने मन नजीवी वात हती.' ,
-	' एक चातुर्मासमां तेनुं एवुं व्रत हतुं के सूर्यनारायणनां दर्शन कर्या पछी ज जमाय.' ,
-	' आ चोमासे अने छोकरा वादळ सामुं जोइ रहीए के कयारे सूर्य देखाय ने कयारे मा जमे.' ,
-	' चोमासामां घणी वेळा दर्शन दोह्यलां थाय ए तो सहु जाणे छे.' ,
-	' एवा दिवसो याद छे के जयारे सूर्यने अमे जोइए, ‘बा, बा, सूरज देखायो’ कहीए ने बा उतावळी उतावळी आवे त्यां तो सूरज भागी जाय. ‘कंइ नहीं, आजे नसीबमां खावानुं नहीं होय’ कही पाछी जाय ने पोताना काममां गूंथाइ जाय.' ,
-	'  आ मात पिताने त्यां हुं संवत १९२५ना भादरवा वद १२ने दिवसे, एटले सने १८६९ना ऑकटोबरनी २जी तारीखे, पोरबंदर अथवा सुदामापुरीमां जन्म पाम्यो.' ,
-	' कोइ निशाळमां मने मूकवामां आवेलो एवुं याद छे.' ,
-	' मुश्केलीथी  पाडा शीखेलो.' ,
-	' ते काळे छोकराओनी साथे हुं महेताजीने मात्र गाळ देतां शीखेलो एटलुं याद छे, अने बीजुं कांइ ज याद नथी.' ,
-	' तेथी हुं अनुमान करुं छु के मारी बुद्धि मंद हशे, अने यादशकित जे कडी अमे छोकरा गाता तेमांना काचा पापडना जेवी हशे.' ,
-	' ए लीटीओ मारे आपवी ज जोइए:  एकडे एक , पापड शेक; पापड कच्चो, --- मारो―  पहेली खाली जग्याए मास्तरनुं नाम होय.' ,
-	' तेने हुं अमर करवा नथी इच्छतो.' ,
-	' बीजी खाली जग्यामां छोडी दीधेली गाळ भरवानी आवश्यकता न होय.' 
+	"ગાંધી કુટુંબ પ્રથમ તો ગાંધિયાણાનો વેપાર કરનારું હોય  એમ જણાય છે.",
+	"પણ મારા દાદાથી માંડીને ત્રણ પેઢી થયાં તો એ કારભારું કરતું આવેલું છે.",
+	"ઉત્તમચંદ ગાંધી અથવા ઓતા ગાંધી ટેકીલા હશે એમ લાગે છે.",
+	"તેમને રાજખટપટને લીધે પોરબંદર છોડવું પડેલું ને જૂનાગઢ રાજયમાં આશ્રય લીધેલો.",
+	"તેમણે નવાબસાહેબને સલામ ડાબે હાથે કરી.",
+	"કોઇએ આ દેખાતા અવિનયનું કારણ પૂછયું તો જવાબ મળ્યો : ‘જમણો હાથ તો પોરબંદરને દેવાઇ ચૂકયો છે.’ ઓતા ગાંધીને એક પછી એક એમ બે ઘર થયેલાં.",
+	"પહેલાથી તેમને ચાર દીકરા હતા અને બીજાથી બે.",
+	"આ ભાઇઓ ઓરમાયા હતા એવો ખ્યાલ મને બચપણ યાદ કરતાં આવતો જ નથી.",
+	"આમાંના પાંચમા કરમચંદ અથવા કબા ગાંધી અને છેલ્લા તુલસીદાસ ગાંધી.",
+	"બંને ભાઇએ વારાફરતી પોરબંદરમાં કારભારું કર્યું. કબા ગાંધી તે મારા પિતાશ્રી.",
+	"પોરબંદરનું કારભારું છોડયા પછી પોતે રાજસ્થાનિક કોર્ટમાં સભાસદ હતા.",
+	"પછી રાજકોટમાં અને થોડો સમય વાંકાનેરમાં દીવાન હતા.",
+	"મરણવેળાએ રાજકોટ દરબારના પેન્શનર હતા.",
+	" કબા ગાંધીને પણ એક પછી એક ચાર ઘર થયેલાં.",
+	"પહેલાં બેથી બે દીકરીઓ હતી; છેલ્લાં પૂતળીબાઇથી એક દીકરી અને ત્રણ દીકરા.",
+	"તેમાંનો છેલ્લો હું. પિતા કુટુંબપ્રેમી, સત્યપ્રીય, શૂરા, ઉદાર પણ ક્રોધી હતા. કંઇક વિષયને વિશે આસકત પણ હશે.",
+	"તેમનો છેલ્લો વિવાહ ચાળીસમા વર્ષ પછી થયેલો.",
+	"તેઓ લાંચથી દૂર ભાગતા, તેથી શુદ્ધ ન્યાય આપતા એવી અમારા કુટુંબમાં અને બહાર વાયકા હતી. રાજયના બહુ વફાદાર હતા.",
+	"એક વેળા કોઇ પ્રાંતના સાહેબે રાજકોટના ઠાકોર સાહેબનું અપમાન કરેલું, તેની સામે તેઓ થયેલા.",
+	"સાહેબ ગુસ્સે થયા, કબા ગાંધીને માફી માગવા ફરમાવ્યું.",
+	"તેમણે માફી માગવાની ના પાડી તેથી થોડા કલાકને સારુ હાજતમાં પણ રહેલા.",
+	"છતાં તે ન ડગ્યા તેથી અંતે સાહેબે તેમને છોડી દેવાનો હુકમ કર્યોં.",
+	"પિતાશ્રીએ દ્રવ્ય એકઠું કરવાનો લોભ કદી નહોતો રાખ્યો.",
+	"તેથી અમે ભાઇઓ સારુ જૂજ મિલકત મૂકી ગયેલા.  પિતાની કેળવણી કેવળ અનુભવની હતી.",
+	"જેને આજે આપણે ગુજરાતી પાંચ ચોપડીનું જ્ઞાન ગણીએ તેટલી કેળવણી તે પામેલ હશે. ઇતિહાસભૂગોળનું જ્ઞાન તો મુદ્દલ ન મળે.",
+	"આમ છતાં વ્યવહારુ જ્ઞાન એવા ઊંચા પ્રકારનું હતું કે ઝીણામાં ઝીણા પ્રશ્ર્નોના ઉકેલ કરવામાં કે હજાર માણસોની પાસે કામ લેવામાં તેમને મુશ્કેલી ન આવતી.",
+	"ધાર્મિક કેળવણી નહીં જેવી હતી, પણ મંદિરોમાં જવાથી કથા વગેરે સાંભળીને જે ધર્મજ્ઞાન અસંખ્ય હિંદુઓને સહેજે મળી રહે છે તે તેમને હતું.",
+	"છેવટના વર્ષમાં એક વિદ્ધાન બ્રાહ્મણ જેઓ કુટુંબના મિત્ર હતા તેમની સલાહથી તેમણે ગીતાપાઠ શરૂ કર્યો હતો અને રોજ થોડાઘણા શ્ર્લોકો પોતાના પૂજાના સમયે ઊંચે સ્વરે પાઠ કરી જતા.",
+	" માતા સાધ્વી સ્ત્રી હતી એવી મારા ઉપર છાપ રહેલી છે.",
+	"તુ બહુ ભાવિક હતી.  પૂજાપાઠ વિના કદી ન જમે  હવેલીએ હંમેશા જાય.",
+	"હું સમજણો થયો ત્યારથી તેણે કદી ચાતુર્માસ છોડયા હોય એવું મને સ્મરણ નથી.",
+	"કઠણમાં કઠણ વ્રત તે આદરતી અને નિર્વિધ્ને પૂરાં કરતી. લીધેલાં વ્રત માંદી પડે તોપણ ન જ છોડે.",
+	"એવો એક સમય મને યાદ છે કે જયારે તેણે ચાંદ્રાયણ વ્રત લીધેલું, તેમાં માંદી પડેલી પણ વ્રતને ન છોડેલું.",
+	"ચાતુર્માસમાં એક ટાણાં કરવાં એ તો તેને સામાન્ય વાત હતી.",
+	"એટલેથી સંતોષ ન વાળતાં એક ચાતુર્માસમાં તેણે ધારણાંપારણાં કરેલાં.",
+	"બેત્રણ સામટા ઉપવાસ એ એને મન નજીવી વાત હતી.",
+	"એક ચાતુર્માસમાં તેનું એવું વ્રત હતું કે સૂર્યનારાયણનાં દર્શન કર્યા પછી જ જમાય.",
+	"આ ચોમાસે અને છોકરા વાદળ સામું જોઇ રહીએ કે કયારે સૂર્ય દેખાય ને કયારે મા જમે.",
+	"ચોમાસામાં ઘણી વેળા દર્શન દોહ્યલાં થાય એ તો સહુ જાણે છે.",
+	"એવા દિવસો યાદ છે કે જયારે સૂર્યને અમે જોઇએ, ‘બા, બા, સૂરજ દેખાયો’ કહીએ ને બા ઉતાવળી ઉતાવળી આવે ત્યાં તો સૂરજ ભાગી જાય.",
+	"‘કંઇ નહીં, આજે નસીબમાં ખાવાનું નહીં હોય’ કહી પાછી જાય ને પોતાના કામમાં ગૂંથાઇ જાય.",
+	" માતા વ્યવહારકુશળ હતી. દરબારી બધી વાતો જાણે. રણવાસમાં તેની બુદ્ધિની આંકણી ઠીક મુકાતી.",
+	"હું બાળક હોઇ કોઇ કોઇ વેળા મને મા દરબારગઢમાં સાથે લઇ જતી.",
+	"‘બામાસાહેબ’ ની સાથે થતા સંવાદો મને કેટલાક હજી યાદ છે.",
+	"આ માત પિતાને ત્યાં હું સંવત ૧૯૨૫ના ભાદરવા વદ ૧૨ને દિવસે, એટલે સને ૧૮૬૯ના ઑકટોબરની ૨જી તારીખે, પોરબંદર અથવા સુદામાપુરીમાં જન્મ પામ્યો.",
+	" બચપણ પોરબંદરમાં જ ગયું. કોઇ નિશાળમાં મને મૂકવામાં આવેલો એવું યાદ છે.  મુશ્કેલીથી થોડા પાડા શીખેલો.",
+	"તે કાળે છોકરાઓની સાથે હું મહેતાજીને માત્ર ગાળ દેતાં શીખેલો એટલું યાદ છે, અને બીજું કાંઇ જ યાદ નથી.",
+	"તેથી હું અનુમાન કરું છુ કે મારી બુદ્ધિ મંદ હશે, અને યાદશકિત જે કડી અમે છોકરા ગાતા તેમાંના કાચા પાપડના જેવી હશે.",
+	"એ લીટીઓ મારે આપવી જ જોઇએ:  એકડે એક , પાપડ શેક; પાપડ કચ્ચો, --- મારો―  પહેલી ખાલી જગ્યાએ માસ્તરનું નામ હોય.",
+	"તેને હું અમર કરવા નથી ઇચ્છતો.  બીજી ખાલી જગ્યામાં છોડી દીધેલી ગાળ ભરવાની આવશ્યકતા ન હોય.",
 ]
 
 // Functions
 function play_tts() {
 	document.getElementById('send-errors').innerHTML = "";
 	if( (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPad/i)) ) {
-		document.getElementById('example-area').innerHTML="<h4 style='color:red;text-align:center;'>Playback and download are not supported on iPhones or iPads</h4><p style='text-align:center;'><input type='submit' value='continue' onclick='continue_session()'></p>";
+		document.getElementById('example-area').innerHTML="<h4 style='color:red;text-align:center;'>Playback and download are not supported on iPhones or iPads</h4><p style='text-align:center;'><input type='submit' value='continue' style='border-radius:.75em;color:#de5841;' onclick='continue_session()'></p>";
 		document.getElementById('comment-area').style.display='none';
+		remove_comments();
 		document.getElementById('example-area').style.display='block';
 		document.getElementById('send-errors').innerHTML = "";
 	} else {
@@ -333,19 +335,28 @@ function play_tts() {
 		document.getElementById('comment-area').style.display = 'block';
 		document.getElementById('example-area').style.display = 'none';
 		document.getElementById('text-area').style.display = 'none';
+		document.getElementById('sentence-controls').style.display = 'none';
+		document.getElementById('request-buttons').style.display = 'none';
+		remove_comments();
+		add_comment();
+		document.getElementById('show-comments').style.display='block';
 		var text = document.getElementById('spoken-text').innerHTML;
-		var voice = currentVoice;
-		if(currentVoice == 'Gujarati_Female_AXB') voice = 'Hindi_Female_AXB.flitevox';
+		var voice = 'cmu_' + currentVoice + '.flitevox';
+//		if(currentVoice == 'cmu_indic_axb_gu.flitevox') voice = 'cmu_indic_axb_hi.flitevox';
 		var audio = document.getElementById('player');
-		audio.setAttribute('src', 'http://tts.speech.cs.cmu.edu:8084/wav?text=' + encodeURIComponent(text) + '&voice=' + encodeURIComponent(voice));
+//		audio.setAttribute('src', 'http://tts.speech.cs.cmu.edu:8084/wav?text=' + encodeURIComponent(text) + '&voice=' + encodeURIComponent(voice));
+		audio.setAttribute('src', 'http://www.hear2read.in/demo/play.php?text=' + encodeURIComponent(text) + '&voice=' + encodeURIComponent(voice));
+		var rate = document.getElementById('play-rate').value
+		audio.playbackRate = rate;
 		audio.play();
 	}
 }
 function download_tts() {
 	document.getElementById('send-errors').innerHTML = "";
 	if( (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPad/i)) ) {
-		document.getElementById('example-area').innerHTML="<h4 style='color:red;text-align:center;'>Playback and download are not supported on iPhones or iPads</h4><p style='text-align:center;'><input type='submit' value='continue' onclick='continue_session()'></p>";
+		document.getElementById('example-area').innerHTML="<h4 style='color:red;text-align:center;'>Playback and download are not supported on iPhones or iPads</h4><p style='text-align:center;'><input type='submit' value='continue' style='border-radius:.75em;color:#de5841;' 		onclick='continue_session()'></p>";
 		document.getElementById('comment-area').style.display='none';
+		remove_comments();
 		document.getElementById('example-area').style.display='block';
 	} else {
 		document.getElementById('audio-controls').style.display = 'none';
@@ -354,19 +365,29 @@ function download_tts() {
 //		document.getElementById('spoken-text').innerHTML = theText;
 		document.getElementById('comment-area').style.display = 'block';
 		document.getElementById('text-area').style.display = 'none';
-		var text = document.getElementById('textarea').value;
-		var voice = currentVoice;
-		if(currentVoice == 'Gujarati_Female_AXB') voice = 'Hindi_Female_AXB.flitevox';
+		var text = document.getElementById('spoken-text').innerHTML;
+		var voice = 'cmu_' + currentVoice + '.flitevox';
+//		if(currentVoice == 'Gujarati_Female_AXB') voice = 'Hindi_Female_AXB.flitevox';
 		var audio = document.getElementById('player');
 		var downloader = document.getElementById('downloader');
-		downloader.setAttribute('href', 'http://tts.speech.cs.cmu.edu:8084/wav?text=' + encodeURIComponent(text) + '&voice=' + encodeURIComponent(voice));
+		downloader.setAttribute('href', 'file:audio/wav,http://tts.speech.cs.cmu.edu:8084/wav?text=' + encodeURIComponent(text) + '&voice=' + 
+			encodeURIComponent(voice));
+		var fileName = currentVoice;
+		fileName = currentVoice.split('.');
+		fileName = fileName[0] + "_" + currentExample + ".wav";
+		downloader.setAttribute('download', fileName);
 		downloader.click();
 	}
+}
+function change_rate() {
+	var rate = document.getElementById('play-rate').value
+	var audio = document.getElementById('player');
+	audio.playbackRate = rate;
 }
 function continue_session() {
 	document.getElementById('send-errors').innerHTML = "";
 	document.getElementById('example-area').innerHTML="";
-	document.getElementById('comment-area').style.display='block';
+	document.getElementById('comment-area').style.display='none';
 	document.getElementById('example-area').style.display='none';
 }
 
@@ -377,29 +398,29 @@ function new_language(language) {
 	var displayVoice = '';
 	document.getElementById('sentence-number').innerHTML = currentExample;
 	switch (currentVoice) {
-	case 'Hindi_Female_AXB.flitevox':
+	case 'indic_axb_hi':
 		currentExampleArray = hindi_examples;
-		displayVoice="Hindi Female AXB";
+		displayVoice="Hindi";
 		break;
-	case 'Kannada_Female_SMJ.flitevox':
+	case 'indic_smj_kn':
 		currentExampleArray = kannada_examples;
-		displayVoice = 'Kannada Female SMJ';
+		displayVoice = 'Kannada';
 		break;
-	case 'Marathi_Female_SLP.flitevox':
+	case 'indic_slp_mr':
 		currentExampleArray = marathi_examples;
-		displayVoice ='Marathi Female SLP';
+		displayVoice ='Marathi';
 		break;
-	case 'Tamil_Male_SKS.flitevox':
+	case 'indic_sxv_ta':
 		currentExampleArray = tamil_examples;
-		displayVoice = 'Tamil Male SKS';
+		displayVoice = 'Tamil';
 		break;
-	case 'Telugu_Female_KNR.flitevox':
+	case 'indic_knr_te':
 		currentExampleArray = telugu_examples;
-		displayVoice = 'Telugu Female KNR';
+		displayVoice = 'Telugu';
 		break;
-	case 'Gujarati_Female_AXB':
+	case 'indic_axb_gu':
 		currentExampleArray = gujarati_examples;
-		displayVoice = 'Gujarati Female AXB';
+		displayVoice = 'Gujarati';
 		break;
 	default:
 		currentExampleArray = '';
@@ -408,11 +429,13 @@ function new_language(language) {
 	document.getElementById('choose-a-voice').style.display='none';
 	document.getElementById('chosen-voice').style.display='inline';
 	document.getElementById('language').innerHTML = displayVoice;
+	document.getElementById('language').style.display='inline';
 	document.getElementById('sentence-controls').style.display = 'inline';
 	document.getElementById('request-buttons').style.display = 'inline';
-	document.getElementById('audio-controls').style.display = 'inline';
+	document.getElementById('audio-controls').style.display = 'none';
 	document.getElementById('spoken-text').innerHTML = currentExampleArray[currentExample-1];
 	document.getElementById('comment-area').style.display = 'block';
+	add_comment();
 	document.getElementById('example-area').style.display = 'none';
 	document.getElementById('text-area').style.display = 'none';
 	document.getElementById('text-identifier').innerHTML = currentVoice + '&nbsp;&nbsp;&nbsp;&nbsp;Example Sentence: '+ currentExample +':';
@@ -423,18 +446,133 @@ function new_voice() {
 	document.getElementById('choose-a-voice').style.display='inline';
 	document.getElementById('chosen-voice').style.display='none';
 	document.getElementById('language-icons').style.display='block';
+	document.getElementById('language').style.display='none';
 	document.getElementById('sentence-controls').style.display = 'none';
 	document.getElementById('request-buttons').style.display = 'none';
 	document.getElementById('audio-controls').style.display = 'none';
 	document.getElementById('comment-area').style.display = 'none';
+	remove_comments();
 	document.getElementById('example-area').style.display = 'none';
 	document.getElementById('textarea').style.display= 'none';
 	document.getElementById('text-area').style.display = 'none';
+	document.getElementById('show-comments').style.display='none';
 }
-
+function add_comment() {
+	// add remove button to current comment
+//	if (commentNumber > 0) {
+//		var buttonId = 'remove_btn' + commentNumber.toString();
+//		document.getElementById(buttonId).style.display='inline';
+//	}
+	// increment comment number
+	commentNumber += 1;
+	// add new comment
+	var container = document.createElement("div");
+	container.innerHTML = "<div id='comment"+commentNumber+"' style='width:100%'>" +
+					"<div style='width:15%;float:left;'>" +
+					"<input type='text' name='comment-word' id='comment-word"+commentNumber+"' onclick='comment_word()' style='float:left;width:100%;border:3px solid;border-radius:5px;'>" +
+					"<button id='remove_btn"+commentNumber+
+					"' style='display:inline;font-size:1.1em;color:#de5841;vertical-align:-.5em;margin-right:.5em;width:90%;' " +
+					"onclick='remove_comment(" +
+					commentNumber+")'>Remove</button></div>" +
+//					"<input type='button' id='remove_btn"+commentNumber+"' value='Remove Comment' onclick='remove_comment("+commentNumber+")' " +
+//					"style='display:inline;border-radius:.75em;margin:.5em 0 0 0;width:90%;font-weight:900;color:#de5841;'></div>" +
+					"<textarea id='comment-text"+commentNumber+"' rows='3' maxlength='500' onclick='comment_text()' style='width:85%;border:3px solid;border-radius:5px;'></textarea>" +
+					"</div>";
+	document.getElementById("comments").appendChild(container);   
+	if ( commentNumber > 1 ) {
+		var prevNumber = commentNumber -1;
+		var obj = 'comment-word' + prevNumber.toString();
+		document.getElementById(obj).autofocus = false;
+	}
+	obj = 'comment-word' + commentNumber.toString();
+	document.getElementById(obj).autofocus = true;
+}
+function remove_comment(commentNumber) {
+	// remove a single comment
+	// single comments are removed by setting their display attribut to 'none
+	var commentId = "comment" + commentNumber.toString();
+	document.getElementById(commentId).style.display='none';
+}
+function remove_comments() { 
+	// remove all comments
+	document.getElementById('comments').innerHTML = ''; 
+	commentNumber=0;
+}
+function comment_word() {
+	document.getElementById('send-errors').innerHTML = "";
+}
+function email_click() {
+	document.getElementById('send-errors').innerHTML = "";
+}
+function name_click() {
+	document.getElementById('send-errors').innerHTML = "";
+}
+function isEmailValid(email) {
+	"use strict";
+	var local;
+	var domail;
+	var e = email.split("@");
+	var local = /[^\w.!#$%&*+-\/=?^_{|}~]/;
+	var domain = /[^\w.-]/;
+	if (e.length !== 2) {
+		return false;
+	}
+	if (local.test(e[0])) {
+		return false;
+	}
+	if (e[0].length > 253) {
+		return false;
+	}
+	if ((e[0][0] === ".") || (/\.\./.test(e[0]))) {
+		return false;
+	}
+	if (domain.test(e[1])) {
+		return false;
+	}
+	if (e[1].length > 253) {
+		return false;
+	}
+	if (e[1][0] === "." || /\.\./.test(e[1]) || e[1][e[1].length - 1] === ".") {
+		return false;
+	}
+	return true;
+}
+function save_user_info() {
+	error_msg = document.getElementById('user-errors');
+	error_msg.innerHTML = "";
+	if ( document.getElementById('user-name').value == "") {
+		error_msg.innerHTML = "<p style='margin-top:0;color:red;text-align:center;'>Please enter you name.</p>";
+	}
+	if ( (email = document.getElementById('e-mail').value) == "" || isEmailValid(email) == false ) {
+		error_msg.innerHTML += "<p style='margin-top:0;color:red;text-align:center;'>Please enter valid email address.</p>";
+	}
+	if (error_msg.innerHTML == '') {
+		document.getElementById('user-info').style.display = 'none';
+		document.getElementById('app-container').style.display='block';
+		send_comments();
+	}
+}
+function no_user_info() {
+	document.getElementById('user-info').style.display='none';
+	document.getElementById('app-container').style.display='block';
+}
+function comment_text() {
+	document.getElementById('send-errors').innerHTML = "";
+}
 function show_examples() {
+	// check to see if there are unsent comments
+	if (there_are_comments()) {
+		var answer = confirm("You have unsent comments.\n\n Select OK to continue without sending your comments and they will be lost.\n\nSelect Cancel to return and send them.");
+		if (answer == false) {
+			return;
+		} else {
+			remove_comments();
+			add_comment();
+		}
+	} 
 	document.getElementById('send-errors').innerHTML = "";	
 	document.getElementById('comment-area').style.display = 'none';
+	remove_comments();
 	var examples = document.getElementById('example-area');
 	var exampleString ="";
 	var temp=currentVoice;
@@ -449,22 +587,61 @@ function show_examples() {
 } 
 
 function next_example() {
+	// check to see if there are unsent comments
+	if (there_are_comments()) {
+		var answer = confirm("You have unsent comments.\n\n Select OK to continue without sending your comments and they will be lost.\n\nSelect Cancel to return and send them.");
+		if (answer == false) {
+			return;
+		} else {
+			remove_comments();
+			add_comment();
+		}
+	} 
 	document.getElementById('send-errors').innerHTML = "";
 	if (currentExample == currentExampleArray.length) currentExample = 1; else currentExample++;
 	document.getElementById('sentence-number').innerHTML = currentExample;
 	document.getElementById('spoken-text').innerHTML = currentExampleArray[currentExample-1];
 	document.getElementById('example-area').style.display = 'none';
 	document.getElementById('comment-area').style.display = 'block';
+	document.getElementById('audio-controls').style.display = 'none';
+	remove_comments();
+	add_comment();
 	document.getElementById('text-identifier').innerHTML = currentVoice + '&nbsp;&nbsp;&nbsp;&nbsp;Example Sentence: '+ currentExample +':';
 }
-
+function there_are_comments() {
+		for (var i = 1; i <= commentNumber; i++) {
+			var commentDivId = 'comment' + i.toString();
+			// only send comments that have not been removed by setting display='none'
+			if (document.getElementById(commentDivId).style.display != 'none') {
+				// make sure there both a word and explaination have been entered
+				if ( (( commentWord = document.getElementById('comment-word'+i.toString()).value) != '') &&
+						(( commentText = document.getElementById('comment-text'+i.toString()).value) != '') ) {
+							return true;
+				}
+			}
+		}
+		return false;
+}
 function prev_example() {
+	// check to see if there are unsent comments
+	if (there_are_comments()) {
+		var answer = confirm("You have unsent comments.\n\n Select OK to continue without sending your comments and they will be lost.\n\nSelect Cancel to return and send them.");
+		if (answer == false) {
+			return;
+		} else {
+			remove_comments();
+			add_comment();
+		}
+	} 
 	document.getElementById('send-errors').innerHTML = "";
 	if (currentExample == 1) currentExample = currentExampleArray.length; else currentExample--;
 	document.getElementById('sentence-number').innerHTML = currentExample;
 	document.getElementById('spoken-text').innerHTML = currentExampleArray[currentExample-1];
 	document.getElementById('example-area').style.display = 'none';
 	document.getElementById('comment-area').style.display = 'block';
+	document.getElementById('audio-controls').style.display = 'none';
+	remove_comments();
+	add_comment();
 	document.getElementById('text-identifier').innerHTML = currentVoice + '&nbsp;&nbsp;&nbsp;&nbsp;Example Sentence: '+ currentExample +':';
 }
 
@@ -473,6 +650,7 @@ function this_example() {
 	currentExample = document.getElementById('sentence-number').innerHTML;
 	document.getElementById('spoken-text').innerHTML = currentExampleArray[currentExample-1];
 	document.getElementById('text-identifier').innerHTML = currentVoice + '&nbsp;&nbsp;&nbsp;&nbsp;Example Sentence: '+ currentExample +':';
+	document.getElementById('audio-controls').style.display = 'none';
 }
 
 function choose_example(string, index) {
@@ -497,6 +675,8 @@ function choose_example(string, index) {
 	currentExample = Number(index) + 1;
 	document.getElementById('example-area').style.display = 'none';
 	document.getElementById('comment-area').style.display = 'block';
+	document.getElementById('audio-controls').style.display = 'none';
+	add_comment();
 	document.getElementById('example-area').style.display = 'none';
 	document.getElementById('text-identifier').innerHTML = currentVoice + '&nbsp;&nbsp;&nbsp;&nbsp;Example Sentence: '+ currentExample +':';
 }
@@ -511,6 +691,7 @@ function text_entered() {
 		document.getElementById('audio-controls').style.display = 'none';
 		document.getElementById('spoken-text').value = "";
 		document.getElementById('comment-area').style.display = 'none';
+		remove_comments();
 	} else {
 		buttons.style.display = 'inline';
 	}
@@ -523,30 +704,76 @@ function new_sentence() {
 	document.getElementById('request-buttons').style.display = 'none';
 	document.getElementById('audio-controls').style.display = 'none';
 	document.getElementById('comment-area').style.display = 'none';
+	remove_comments();
 	document.getElementById('example-area').style.display = 'none';
 	document.getElementById('textarea').value = "";
+}
+function skip_comments() {
+	if (there_are_comments()) {
+		var answer = confirm("You have unsent comments.\n\n Select OK to continue without sending your comments and they will be lost.\n\nSelect Cancel to return and send them.");
+		if (answer == false) {
+			return;
+		} else {
+			remove_comments();
+			add_comment();
+		}
+	} 
+	document.getElementById('comment-errors').innerHTML = "";
+	document.getElementById('sentence-controls').style.display='inline';
+	document.getElementById('audio-controls').style.display='none';
+	document.getElementById('request-buttons').style.display='inline';
+	document.getElementById('show-comments').style.display='none';
 }
 function send_comments() {
 	document.getElementById('send-errors').innerHTML = "";
 	var user_name = document.getElementById("user-name").value;
 	var user_from = document.getElementById("e-mail").value;
-	var user_language = currentVoice;
-	var user_sentence = document.getElementById('spoken-text').innerHTML;
-	var user_comment = document.getElementById('user-comments').value;
-	document.getElementById('send-errors').innerHTML = "<p style='margin-top:0;color:red;text-align:center;'>Send in progress</p>";
-	var oXHR = new XMLHttpRequest();        
-    oXHR.open("POST", "app.php", true);
-	oXHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	oXHR.onreadystatechange = function() {
-		if(oXHR.readyState == 4 && oXHR.status == 200) {
-			console.log("in readyState handler for send_comments:");
-		    var return_data = oXHR.responseText;
-			document.getElementById('send-errors').innerHTML = return_data;
+	var user_language = 'cmu_' + currentVoice + '.flitevox';
+	var user_sentence = currentExample.toString() + ": " +document.getElementById('spoken-text').innerHTML;
+	var user_comment = '';
+	for (var i = 1; i <= commentNumber; i++) {
+		var commentDivId = 'comment' + i.toString();
+		// only send comments that have not been removed by setting display='none'
+		if (document.getElementById(commentDivId).style.display != 'none') {
+			// make sure there both a word and explaination have been entered
+			if ( (( commentWord = document.getElementById('comment-word'+i.toString()).value) != '') &&
+					(( commentText = document.getElementById('comment-text'+i.toString()).value) != '') ) {
+						user_comment = user_comment + "<p><span style='color:blue;'>In word: <span style='font-weight:900;'>"+commentWord+
+						"</span></span><br />" + commentText +"</p><br />";
+			}
 		}
-	 }
-	// turn off buttons
-	var call_id = 'send-comments';
-	var vars ="call_id='"+call_id+"'&name='"+user_name+"'&from='"+user_from+"'&lang='"+user_language+"'&sentence='"+user_sentence+"'&comment='"+user_comment+"'";
-     oXHR.send(vars);
+	}
+	if (user_comment != '') {
+		if (user_name == '') {
+			document.getElementById('user-info').style.display='block';
+			document.getElementById('app-container').style.display='none';
+		} else {
+			document.getElementById('send-errors').innerHTML = "<p style='margin-top:0;color:#00548b;text-align:center;'>Send in progress</p>";
+			var oXHR = new XMLHttpRequest();        
+			oXHR.open("POST", "app.php", true);
+			oXHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			oXHR.onreadystatechange = function() {
+				if(oXHR.readyState == 4 && oXHR.status == 200) {
+					console.log("in readyState handler for send_comments:");
+					var return_data = oXHR.responseText;
+					document.getElementById('send-errors').innerHTML = return_data;
+					if (return_data.split[0] = "Thank") {
+						remove_comments();
+						// add_comment();
+						document.getElementById('sentence-controls').style.display='inline';
+						document.getElementById('audio-controls').style.display='none';
+						document.getElementById('request-buttons').style.display='inline';
+						document.getElementById('show-comments').style.display='none';
+					}
+				}
+			}
+			// turn off buttons
+			var call_id = 'send-comments';
+			var vars ="call_id='"+call_id+"'&name='"+user_name+"'&from='"+user_from+"'&lang='"+user_language+"'&sentence='"+user_sentence+"'&comment='"+user_comment+"'";
+			oXHR.send(vars);
+		}
+	} else {
+		document.getElementById('comment-errors').innerHTML = "<p style='margin-top:0;color:red;text-align:center;'>No Comments to Send</p>";
+	}
 	return;
 }

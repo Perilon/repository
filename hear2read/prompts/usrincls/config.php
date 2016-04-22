@@ -7,14 +7,14 @@ if(!headers_sent()) header('Content-type: text/html; charset=utf-8');
         /* Settings for Admin */
 
 // HERE add you data for connecting to MySQL database (MySQL server, user, password, database name)
-$mysql['host'] = 'hear2readcom.ipagemysql.com';
-$mysql['user'] = 'h2radmin';
-$mysql['pass'] = 'H2R!DB?Tim4';
+$mysql['host'] = 'localhost';
+$mysql['user'] = 'root';
+$mysql['pass'] = 'H2Rdb?Tim7!';
 $mysql['bdname'] = 'h2rprompts';
 
 // Set administrator login data, and e-mail
-define('ADMINNAME', 'admin');                      // the admin name (at least 3 characters)
-define('ADMINPASS', 'H2R!ws?Tim4');                    // the admin password (at least 7 characters)
+define('ADMINNAME', 'root');                      // the admin name (at least 3 characters)
+define('ADMINPASS', 'H2R!ws?Tim77');                    // the admin password (at least 7 characters)
 define('ADMINMAIL', 'suresh@hear2read.org');         // Here add the Administrator e-mail
 
 // If you want to use a GMail account for sending mails to user (Link confirmation, Recovery data)

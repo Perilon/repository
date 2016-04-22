@@ -12,7 +12,7 @@
 		<div id="features-wrapper">
 				<section id="features" class="container">
 					<div style="width:25%;float:left;"><a href="https://en.wikipedia.org/wiki/Right_to_education" target="_blank">
-						<img src="images/header-pic01.jpg" alt="Young child holding a sign that reads \"Right to education\"." /></a>
+						<img src="images/header-pic01.jpg" alt='Young child holding a sign that reads \"Right to education\"' /></a>
 						<header>
 							<a href="https://en.wikipedia.org/wiki/Right_to_education" target="_blank"><h3 class="labeltext">Dreams</h3></a>
 						</header>	
@@ -45,7 +45,8 @@
 
 					<div id="features">
 						<br />
-						<h2><a style="color: red;" href="join.php">Join us</a> to Increase Literacy among the 60 Million Visually Impaired in India</h2> 
+						<!-- <h2><a style="color:#de5841;" href="join.php">Join us</a> to Increase Literacy among the 60 Million Visually Impaired in India</h2> -->
+						<h2 style='color:#de5841;'>Bridging the Digital Divide for Blind and Low Vision Indic Language Speakers</h2>
 						<div>
 							<ul class="un_numbered">
 								<li>Same quality of education for the visually impaired as for people with sight</li>
@@ -65,7 +66,7 @@
 							<!-- Feature -->
 								<section>
 									<header>
-										<h3 style="color:red;">Challenges</h3>
+										<h3 style="color:#de5841;">Challenges</h3>
 									</header>
 									<div>
 										<ul>
@@ -81,12 +82,12 @@
 							<!-- Feature -->
 								<section>
 									<header>
-										<h3 style="color:red;">Solution</h3>
+										<h3 style="color:#de5841;">Solution</h3>
 									</header>
 									<div>
 										<ul>
-											<li>Text to Speech software allows the VI population to read digital information (email, documents, websites, e-books, etc.) just as people with sight do without first printing it. (<a href="https://www.youtube.com/watch?v=vJASRrKYBLs" target="_blank">TEDx talk</a>)</li>
-											<li>Open source Test to Speech sofware in Indian Languages that runs on low cost Smart Phones and Tablets allows access to digital content.</li>
+											<li>Text to Speech software allows visually challenged people to read digital media (email, documents, websites, e-books, etc.) just as people with sight do without printing it. (<a href="https://www.youtube.com/watch?v=vJASRrKYBLs" target="_blank">TEDx talk</a>)</li>
+											<li>Open source Text to Speech software for Indian Languages that runs on low cost Smart Phones and Tablets allows access to digital content.</li>
 										</ul>
 									</div>
 								</section>

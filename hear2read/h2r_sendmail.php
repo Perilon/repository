@@ -7,6 +7,7 @@ use Mailgun\Mailgun;
 
   if($_POST['sendmail'] || $_POST['sendmail_x']) {
     $email_to = "suresh@hear2read.org";
+//	$email_to = "twhite94301@gmail.com";
     $email_subject = "Hear2Read Enquiry: "; 
     $ip_address = $_SERVER['REMOTE_ADDR'];
 	$geoplugin = new geoPlugin();
@@ -55,7 +56,7 @@ use Mailgun\Mailgun;
       $bad = array("content-type","bcc:","to:","cc:","href");
       return str_replace($bad,"",$string);
     }
-	$file = 'stats/gotcha_log';
+	$file = '/stats/gotcha_log';
 	$gotcha_entry = date("Y-m-d H:i:s") . "GOTCHA ";
 	if ($securimage->check($_POST['captcha_code']) == false) {
 		// the code was incorrect
@@ -68,7 +69,7 @@ use Mailgun\Mailgun;
 	$gotcha_entry .= "Success " . "; IP: " . $geoplugin->ip . "; city: " . $geoplugin->city . "; country: " . $geoplugin->countryName . "\n";
 	file_put_contents($file, $gotcha_entry, FILE_APPEND | LOCK_EX);
 	
-    $email_message .= "<p>Name: ".clean_string($email_name)."</p>";
+    $email_message = "<p>Name: ".clean_string($email_name)."</p>";
     $email_message .= "<p>Email: ".clean_string($email_from)."</p>";
     $email_message .= "<p>IP Address: ".$ip_address."<br /></p>";
     $email_message .= "<pre>";
@@ -80,12 +81,20 @@ use Mailgun\Mailgun;
     $email_message .= "</pre>";
     $email_message .= "<p>Message: </p><p>".clean_string(nl2br($message))."</p>";
 
+//	Send to mailgun via HTTP
+//	curl -s --user 'key-8ab8ad3cd5293bdb93c1b31ea8bb25cd' \
+//		https://api.mailgun.net/v3/sandboxa915612f51ef4ecbb89f0ca2638e29ad.mailgun.org/messages \
+//		-F from="hear2read Enquiry <postmaster@sandboxa915612f51ef4ecbb89f0ca2638e29ad.mailgun.org>" \
+//		-F to=.$email_to \
+//		-F subject=$email_subject \
+//		-F text="<html>".$email_message."</html>";
+
 // Instantiate the client
 	$mgClient=new Mailgun('key-8ab8ad3cd5293bdb93c1b31ea8bb25cd');
 	$domain="sandboxa915612f51ef4ecbb89f0ca2638e29ad.mailgun.org";
 // Send Message through mailgun
 	$result=$mgClient->sendMessage("$domain",
-									array(  'from'    => "postmaster@sandboxa915612f51ef4ecbb89f0ca2638e29ad.mailgun.org",
+									array(  'from'    => "Hear2Read Enquiry <postmaster@sandboxa915612f51ef4ecbb89f0ca2638e29ad.mailgun.org>",
 											'to'      => "<".$email_to.">",
 											'subject' => $email_subject,
 											'html'    => "<html>".$email_message."</html>"  ));
@@ -96,4 +105,42 @@ use Mailgun\Mailgun;
 		echo "<p style=\"color: red; text-align: center;\">An error has occured sending your message.</p><p>Please try contacting us directly at suresh[at]hear2read[dot]com.</p>";
   	}
   }
+  else {
+		echo				"<p>We would love to hear from you.  If you have any questions or comments, or if you wish to join Hear2Read, fill out the form below.  (Or, you can contact us directly by emailing us at suresh[at]hear2read[dot]org.)</p>";
+		echo 					"<div>";
+		echo 					"	<form method=\"post\" action=\"$this_page\">";
+		echo					"		<div class=\"row 50%\">";
+		echo					"			<div class=\"6u\">";
+		echo					"				<input name=\"name\" placeholder=\"Name\" type=\"text\" required />";
+		echo					"			</div>";
+		echo					"			<div class=\"6u\">";
+		echo					"				<input name=\"email\" placeholder=\"Email\" type=\"email\" required/>";
+		echo					"			</div>";
+		echo					"		</div>";
+		echo					"		<div class=\"row 50%\">";
+		echo					"			<div class=\"12u\">";
+		echo					"				<input name=\"subject\" placeholder=\"Subject\" type=\"text\" required/>";
+		echo					"			</div>";
+		echo					"		</div>";
+		echo					"		<div class=\"row 50%\">";
+		echo					"			<div class=\"12u\">";
+		echo					"				<textarea name=\"message\" placeholder=\"Message\" required></textarea>";
+		echo					"			</div>";
+		echo					"		</div>";
+		echo					"		<div style=\"width: 50%;\">";
+		echo					"			<img style=\"width: 50%;\" id=\"captcha\" src=\"/securimage/securimage_show.php\" alt=\"CAPTCHA Image\" />";
+		echo					"			<a tabindex=\"-1\" style=\"border: 0; width: initial; height: initial;\" href=\"#\" title=\"Refresh Image\" onclick=\"document.getElementById('captcha').src = '/securimage/securimage_show.php?' + Math.random(); this.blur(); return false\">";
+		echo					"				<img style=\"width:initial;\" height=\"32\" width=\"32\" src=\"/securimage/images/refresh.png\" alt=\"Refresh Image\" onclick=\"this.blur()\" align=\"top\" border=\"0\">";
+		echo					" 			</a>";
+		echo					"			<input type=\"text\" name=\"captcha_code\" maxlength=\"6\" placeholder=\"Enter captcha code\" />";
+		echo					"			<br/>";
+		echo					"		</div>";
+		echo					"		<div class=\"row 50%\">";
+		echo					"			<div class=\"6u\">";
+		echo					"			    <input style=\"width: 20%;\" id=\"sendmail\" name=\"sendmail\" type=\"image\" src=\"images/icon-email.png\" alt=\"Send Message\">";
+		echo					"			</div>";
+		echo					"		</div>";
+		echo					"	</form>";
+		echo					"</div>";
+  } 
 ?>
